@@ -20,7 +20,7 @@ export default function ContactPage() {
           </button>
           <div className="flex items-center gap-2">
             <div className="text-2xl">🧠</div>
-            <span className="font-bold text-lg">Magnet Mind</span>
+            <span className="font-bold text-lg">Magnet Protocol</span>
           </div>
           <div className="w-6"></div>
         </div>
@@ -33,7 +33,7 @@ export default function ContactPage() {
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Get in Touch</h2>
               <p className="text-gray-300 leading-relaxed">
-                We&apos;re here to help! If you have any questions, concerns, or feedback about Magnet Mind, please don&apos;t hesitate to reach out to us.
+                We&apos;re here to help! If you have any questions, concerns, or feedback about Magnet Protocol, please don&apos;t hesitate to reach out to us.
               </p>
             </div>
 
@@ -80,7 +80,7 @@ export default function ContactPage() {
 
           {/* Footer */}
           <div className="mt-12 pt-8 border-t border-gray-700 text-center text-xs text-gray-500 space-y-1">
-            <p>© 2025 Magnet Mind. All rights reserved.</p>
+            <p>© 2025 Magnet Protocol. All rights reserved.</p>
           </div>
         </div>
       </div>

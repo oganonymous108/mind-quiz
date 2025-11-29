@@ -328,7 +328,7 @@ export default function QuizPage() {
           </button>
           <div className="flex items-center gap-2">
             <div className="text-2xl">🧠</div>
-            <span className="font-bold text-lg">Magnet Mind</span>
+            <span className="font-bold text-lg">Magnet Protocol</span>
           </div>
           <div className="text-sm text-gray-400">
             {questionId} of {QUIZ_QUESTIONS.length}

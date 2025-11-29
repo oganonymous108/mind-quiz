@@ -1,4 +1,4 @@
-# Magnet Mind Quiz Funnel
+# Magnet Protocol Quiz Funnel
 
 A Next.js-based quiz funnel application that guides users through a personalized assessment and redirects to a ClickBank affiliate page.
 

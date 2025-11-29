@@ -20,7 +20,7 @@ export default function PrivacyPage() {
           </button>
           <div className="flex items-center gap-2">
             <div className="text-2xl">🧠</div>
-            <span className="font-bold text-lg">Magnet Mind</span>
+            <span className="font-bold text-lg">Magnet Protocol</span>
           </div>
           <div className="w-6"></div>
         </div>
@@ -34,7 +34,7 @@ export default function PrivacyPage() {
             <section>
               <h2 className="text-xl font-semibold mb-3 text-orange-400">1. Introduction</h2>
               <p>
-                Welcome to Magnet Mind. We are committed to protecting your privacy and ensuring you have a positive experience on our website and in using our products and services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
+                Welcome to Magnet Protocol. We are committed to protecting your privacy and ensuring you have a positive experience on our website and in using our products and services. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website.
               </p>
             </section>
 
@@ -126,7 +126,7 @@ export default function PrivacyPage() {
 
           {/* Footer */}
           <div className="mt-12 pt-8 border-t border-gray-700 text-center text-xs text-gray-500 space-y-1">
-            <p>© 2025 Magnet Mind. All rights reserved.</p>
+            <p>© 2025 Magnet Protocol. All rights reserved.</p>
           </div>
         </div>
       </div>

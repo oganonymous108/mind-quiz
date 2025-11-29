@@ -35,7 +35,7 @@ export default function ResultsPreviewPage() {
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <div className="flex items-center gap-2">
             <div className="text-2xl">🧠</div>
-            <span className="font-bold text-lg">Magnet Mind</span>
+            <span className="font-bold text-lg">Magnet Protocol</span>
           </div>
         </div>
 

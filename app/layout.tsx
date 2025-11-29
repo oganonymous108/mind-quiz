@@ -3,7 +3,7 @@ import './globals.css'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 export const metadata: Metadata = {
-  title: 'Magnet Mind - Create the Life You Want',
+  title: 'Magnet Protocol - Create the Life You Want',
   description: 'Learn to think, feel, and act like the most prosperous minds',
 }
 
