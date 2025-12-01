@@ -33,7 +33,7 @@ export default function CalculatingPage() {
         }
         return prev + 2
       })
-    }, 50)
+    }, 90)
 
     // Update task completion based on progress
     const taskInterval = setInterval(() => {
