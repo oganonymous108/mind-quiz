@@ -234,9 +234,12 @@ export default function QuizPage() {
       localStorage.setItem('quizAnswers', JSON.stringify(updatedAnswers))
       setStoredAnswers(updatedAnswers)
 
-      // Navigate to next question or results
+      // Navigate to next question, info page, or results
       setTimeout(() => {
-        if (questionId < QUIZ_QUESTIONS.length) {
+        if (questionId === 5) {
+          // After question 5, go to info page
+          router.push('/quiz/info')
+        } else if (questionId < QUIZ_QUESTIONS.length) {
           router.push(`/quiz/${questionId + 1}`)
         } else {
           router.push('/quiz/calculating')
@@ -281,8 +284,11 @@ export default function QuizPage() {
     localStorage.setItem('quizAnswers', JSON.stringify(updatedAnswers))
     setStoredAnswers(updatedAnswers)
 
-    // Navigate to next question or results
-    if (questionId < QUIZ_QUESTIONS.length) {
+    // Navigate to next question, info page, or results
+    if (questionId === 5) {
+      // After question 5, go to info page
+      router.push('/quiz/info')
+    } else if (questionId < QUIZ_QUESTIONS.length) {
       router.push(`/quiz/${questionId + 1}`)
     } else {
       router.push('/quiz/calculating')
@@ -290,7 +296,10 @@ export default function QuizPage() {
   }
 
   const handleBack = () => {
-    if (questionId > 1) {
+    if (questionId === 6) {
+      // From question 6, go back to info page
+      router.push('/quiz/info')
+    } else if (questionId > 1) {
       router.push(`/quiz/${questionId - 1}`)
     } else {
       // Track abandonment when leaving quiz to go back to landing page
