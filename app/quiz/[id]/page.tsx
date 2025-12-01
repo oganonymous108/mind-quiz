@@ -324,7 +324,7 @@ export default function QuizPage() {
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex justify-center">
-      <div className="w-full max-w-[480px]">
+      <div className="w-full max-w-[480px] flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <button
@@ -356,8 +356,8 @@ export default function QuizPage() {
           </div>
         </div>
 
-        {/* Question */}
-        <div className="px-4 mb-8">
+        {/* Question - Content area that can grow */}
+        <div className="px-4 mb-8 flex-grow">
           <h1 className="text-2xl font-bold text-center mb-8">
             {currentQuestion.question}
           </h1>
@@ -436,9 +436,9 @@ export default function QuizPage() {
           )}
         </div>
 
-        {/* Next Button - Only show for multiple choice and number input questions */}
+        {/* Next Button - Sticky at bottom for multiple choice and number input questions */}
         {currentQuestion.type !== 'single' && (
-          <div className="px-4 pb-8">
+          <div className="sticky bottom-0 px-4 pt-4 pb-8 bg-[#1a1a1a] border-t border-gray-800/50">
             <button
               onClick={handleNext}
               disabled={currentQuestion.type === 'number' ? (!numberInput || numberInput === '0') : selectedAnswers.length === 0}
@@ -453,11 +453,13 @@ export default function QuizPage() {
           </div>
         )}
 
-        {/* Footer */}
-        <div className="px-4 pb-8 text-center text-xs text-gray-500 space-y-1">
-          <p>© 2025 All rights reserved.</p>
-          <p>Disclaimer: Results may vary from person to person</p>
-        </div>
+        {/* Footer - Only show if not multiple choice question (to avoid overlap with sticky button) */}
+        {currentQuestion.type === 'single' && (
+          <div className="px-4 pb-8 text-center text-xs text-gray-500 space-y-1">
+            <p>© 2025 All rights reserved.</p>
+            <p>Disclaimer: Results may vary from person to person</p>
+          </div>
+        )}
       </div>
     </div>
   )
