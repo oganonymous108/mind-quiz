@@ -14,7 +14,7 @@ module.exports = {
         },
       },
       fontSize: {
-        '3xl': '24px',
+        '3xl': ['24px', { lineHeight: '28px' }],
       },
       keyframes: {
         shimmer: {
