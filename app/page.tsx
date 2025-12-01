@@ -78,29 +78,15 @@ export default function LandingPage() {
           <div className="flex gap-4">
             <button
               onClick={() => handleGenderSelect('male')}
-              className="flex-1 py-4 px-6 rounded-2xl font-semibold transition-all bg-gradient-to-r from-orange-300 to-orange-600 text-white relative overflow-hidden"
-              style={{
-                boxShadow: '0 0 10px rgba(255, 165, 0, 0.3)',
-                borderTop: '1px solid rgba(255, 215, 0, 0.6)',
-                borderBottom: '1px solid rgba(255, 215, 0, 0.6)',
-              }}
+              className="flex-1 py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
             >
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent"></div>
-              <span className="relative z-10">Male</span>
+              Male
             </button>
             <button
               onClick={() => handleGenderSelect('female')}
-              className="flex-1 py-4 px-6 rounded-2xl font-semibold transition-all bg-gradient-to-r from-orange-300 to-orange-600 text-white relative overflow-hidden"
-              style={{
-                boxShadow: '0 0 10px rgba(255, 165, 0, 0.3)',
-                borderTop: '1px solid rgba(255, 215, 0, 0.6)',
-                borderBottom: '1px solid rgba(255, 215, 0, 0.6)',
-              }}
+              className="flex-1 py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
             >
-              <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-yellow-300 to-transparent"></div>
-              <span className="relative z-10">Female</span>
+              Female
             </button>
           </div>
         </div>
