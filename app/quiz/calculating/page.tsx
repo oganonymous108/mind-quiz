@@ -158,7 +158,7 @@ export default function CalculatingPage() {
           </div>
           
           {/* Testimonial Text */}
-          <p className="text-white italic mb-4 text-sm leading-relaxed">
+          <p className="text-white italic mb-4 text-sm leading-[23px]">
             &quot;I stopped chasing. I started attracting. The moment my energy shifted, everything else did too - opportunities, people, income. For the first time, I wasn&apos;t just visualizing my future self. I was living it.&quot;
           </p>
           

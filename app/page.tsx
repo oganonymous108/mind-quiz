@@ -62,10 +62,10 @@ export default function LandingPage() {
           <h1 className="text-3xl font-bold mb-4 text-left">
             Create the life you&apos;ve always wanted within days
           </h1>
-          <p className="text-white text-left text-base leading-relaxed mb-4">
+          <p className="text-white text-left text-base leading-[23px] mb-4">
             Crafted by experts in hypnosis and neuroscience to unlock abundance: happiness, wealth, love and more with a 21-day personalized program.
           </p>
-          <p className="text-white text-left text-base leading-relaxed mb-4">
+          <p className="text-white text-left text-base leading-[23px] mb-4">
             Why settle for less when you can <span className="text-orange-300">live the life you deserve</span>...
           </p>
         </div>

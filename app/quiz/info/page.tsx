@@ -50,19 +50,19 @@ export default function InfoPage() {
             Neuroscience shows that your subconscious controls 95% of your life
           </h1>
           
-          <p className="text-white text-left text-base leading-relaxed mb-4">
+          <p className="text-white text-left text-base leading-[23px] mb-4">
             ...without you realizing it. And most of it was shaped long ago - in childhood.
           </p>
 
-          <p className="text-white text-left text-base leading-relaxed mb-4">
+          <p className="text-white text-left text-base leading-[23px] mb-4">
             If it&apos;s filled with fear, doubt, or scarcity... It quietly <span className="font-bold text-orange-500">sabotages your success, your joy, and everything you&apos;re trying to attract.</span>
           </p>
 
-          <p className="text-white text-left text-base leading-relaxed mb-4">
+          <p className="text-white text-left text-base leading-[23px] mb-4">
             You can work harder. Think more positively. Try again and again. But nothing truly changes - because the block is deeper.
           </p>
 
-          <p className="text-white text-left text-base leading-relaxed mb-6">
+          <p className="text-white text-left text-base leading-[23px] mb-6">
             This is why you still feel stuck, even when you&apos;re doing your best. <span className="font-bold text-orange-500">And that&apos;s exactly what Magnet Protocol is about to change.</span>
           </p>
         </div>

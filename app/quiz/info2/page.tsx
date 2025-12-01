@@ -50,7 +50,7 @@ export default function Info2Page() {
             Thank you for sharing
           </h1>
           
-          <p className="text-white text-left text-base leading-relaxed">
+          <p className="text-white text-left text-base leading-[23px]">
             What you&apos;re feeling is completely normal — we all carry hidden patterns that quietly hold us back. That&apos;s exactly why we created Magnet Protocol with leading experts: to clear those blocks and open the path to abundance.
           </p>
         </div>

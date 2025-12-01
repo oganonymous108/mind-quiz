@@ -30,7 +30,7 @@ export default function TermsPage() {
           <h1 className="text-3xl font-bold mb-6">Terms & Conditions</h1>
           <p className="text-gray-400 text-sm">Last updated: January 2025</p>
 
-          <div className="space-y-6 text-gray-300 leading-relaxed">
+          <div className="space-y-6 text-gray-300 leading-[23px]">
             <section>
               <h2 className="text-xl font-semibold mb-3 text-orange-400">1. Agreement to Terms</h2>
               <p>

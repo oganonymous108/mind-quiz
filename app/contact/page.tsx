@@ -32,14 +32,14 @@ export default function ContactPage() {
           <div className="space-y-4">
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Get in Touch</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-[23px]">
                 We&apos;re here to help! If you have any questions, concerns, or feedback about Magnet Protocol, please don&apos;t hesitate to reach out to us.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Email Support</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-[23px]">
                 For general inquiries, support, or questions about our programs:
               </p>
               <a 
@@ -52,14 +52,14 @@ export default function ContactPage() {
 
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Response Time</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-[23px]">
                 We aim to respond to all inquiries within 24-48 hours during business days. For urgent matters, please mark your email as &quot;Urgent&quot; in the subject line.
               </p>
             </div>
 
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Technical Support</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-[23px]">
                 If you&apos;re experiencing technical issues with our platform or programs, please include:
               </p>
               <ul className="list-disc list-inside text-gray-300 mt-2 space-y-1 ml-4">
@@ -72,7 +72,7 @@ export default function ContactPage() {
 
             <div>
               <h2 className="text-xl font-semibold mb-2 text-orange-400">Business Hours</h2>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-[23px]">
                 Our support team is available Monday through Friday, 9:00 AM - 5:00 PM EST. We do our best to respond to weekend inquiries as soon as possible.
               </p>
             </div>
