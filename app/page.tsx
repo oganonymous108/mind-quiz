@@ -31,7 +31,7 @@ export default function LandingPage() {
         {/* Free Gift Header */}
         <div className="px-4">
           <div 
-            className="text-center pt-2 pb-2 px-4"
+            className="text-center pt-1 pb-1 px-4"
             style={{
               background: 'linear-gradient(to right, #1a0d2e 0%, #8b5a3c 100%)',
               borderRadius: '15px'
@@ -40,7 +40,7 @@ export default function LandingPage() {
             <p className="text-white">
               Complete the quiz - get a
             </p>
-            <p className="text-[20px] font-bold text-orange-300 mt-1">FREE Self Confidence guide</p>
+            <p className="text-[18px] font-bold text-orange-300 mt-1">FREE Self Confidence guide</p>
           </div>
         </div>
 
