@@ -40,7 +40,7 @@ export default function LandingPage() {
             <p className="text-white">
               Complete the quiz - get a
             </p>
-            <p className="text-[18px] font-bold text-orange-300 mt-1">FREE Self Confidence guide</p>
+            <p className="text-[18px] text-orange-300 mt-1">FREE Self Confidence guide</p>
           </div>
         </div>
 
