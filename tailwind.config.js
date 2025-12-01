@@ -13,6 +13,9 @@ module.exports = {
           dark: '#1a1a1a',
         },
       },
+      fontSize: {
+        '3xl': '24px',
+      },
       keyframes: {
         shimmer: {
           '0%': { backgroundPosition: '-200% 0' },
