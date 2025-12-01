@@ -239,6 +239,9 @@ export default function QuizPage() {
         if (questionId === 5) {
           // After question 5, go to info page
           router.push('/quiz/info')
+        } else if (questionId === 7) {
+          // After question 7, go to info2 page
+          router.push('/quiz/info2')
         } else if (questionId < QUIZ_QUESTIONS.length) {
           router.push(`/quiz/${questionId + 1}`)
         } else {
@@ -288,6 +291,9 @@ export default function QuizPage() {
     if (questionId === 5) {
       // After question 5, go to info page
       router.push('/quiz/info')
+    } else if (questionId === 7) {
+      // After question 7, go to info2 page
+      router.push('/quiz/info2')
     } else if (questionId < QUIZ_QUESTIONS.length) {
       router.push(`/quiz/${questionId + 1}`)
     } else {
@@ -299,6 +305,9 @@ export default function QuizPage() {
     if (questionId === 6) {
       // From question 6, go back to info page
       router.push('/quiz/info')
+    } else if (questionId === 8) {
+      // From question 8, go back to info2 page
+      router.push('/quiz/info2')
     } else if (questionId > 1) {
       router.push(`/quiz/${questionId - 1}`)
     } else {

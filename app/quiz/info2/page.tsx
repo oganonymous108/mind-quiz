@@ -3,12 +3,12 @@
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 
-export default function InfoPage() {
+export default function Info2Page() {
   const router = useRouter()
 
   const handleGotIt = () => {
-    // Continue to question 6
-    router.push('/quiz/6')
+    // Continue to question 8
+    router.push('/quiz/8')
   }
 
   return (
@@ -17,7 +17,7 @@ export default function InfoPage() {
         {/* Header */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <button
-            onClick={() => router.push('/quiz/5')}
+            onClick={() => router.push('/quiz/7')}
             className="text-white hover:text-orange-400 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -31,12 +31,12 @@ export default function InfoPage() {
           <div className="w-6"></div>
         </div>
 
-        {/* Neuron Image */}
+        {/* Brain Image */}
         <div className="px-4 mb-6 mt-4">
           <div className="relative w-full h-[300px] overflow-hidden" style={{ borderRadius: '20px' }}>
             <Image
-              src="/info1.jpg"
-              alt="Neuron illustration"
+              src="/info2.jpg"
+              alt="Brain illustration"
               fill
               className="object-cover"
               priority
@@ -46,24 +46,12 @@ export default function InfoPage() {
 
         {/* Text Content - Content area that can grow */}
         <div className="px-4 mb-8 flex-grow">
-          <h1 className="text-2xl font-bold mb-4 text-left">
-            Neuroscience shows that your subconscious controls 95% of your life
+          <h1 className="text-2xl font-bold mb-4 text-center">
+            Thank you for sharing
           </h1>
           
-          <p className="text-white text-left text-base leading-relaxed mb-4">
-            ...without you realizing it. And most of it was shaped long ago - in childhood.
-          </p>
-
-          <p className="text-white text-left text-base leading-relaxed mb-4">
-            If it&apos;s filled with fear, doubt, or scarcity... It quietly <span className="font-bold text-orange-500">sabotages your success, your joy, and everything you&apos;re trying to attract.</span>
-          </p>
-
-          <p className="text-white text-left text-base leading-relaxed mb-4">
-            You can work harder. Think more positively. Try again and again. But nothing truly changes - because the block is deeper.
-          </p>
-
-          <p className="text-white text-left text-base leading-relaxed mb-6">
-            This is why you still feel stuck, even when you&apos;re doing your best. <span className="font-bold text-orange-500">And that&apos;s exactly what Magnet Protocol is about to change.</span>
+          <p className="text-white text-left text-base leading-relaxed">
+            What you&apos;re feeling is completely normal — we all carry hidden patterns that quietly hold us back. That&apos;s exactly why we created Magnet Protocol with leading experts: to clear those blocks and open the path to abundance.
           </p>
         </div>
 
