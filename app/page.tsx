@@ -45,7 +45,7 @@ export default function LandingPage() {
         </div>
 
         {/* Main Image */}
-        <div className="px-4 mb-8 mt-[10px]">
+        <div className="px-4 mb-[10px] mt-[10px]">
           <div className="relative w-full h-[240px] overflow-hidden" style={{ borderRadius: '20px' }}>
             <Image
               src="/main.jpg"
