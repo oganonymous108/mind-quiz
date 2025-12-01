@@ -35,7 +35,7 @@ export default function Info2Page() {
         <div className="px-4 mb-6 mt-4">
           <div className="relative w-full h-[300px] overflow-hidden" style={{ borderRadius: '20px' }}>
             <Image
-              src="/info2.jpg"
+              src="/info1.jpeg"
               alt="Brain illustration"
               fill
               className="object-cover"
