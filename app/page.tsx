@@ -46,7 +46,7 @@ export default function LandingPage() {
 
         {/* Main Image */}
         <div className="px-4 mb-[10px] mt-[10px]">
-          <div className="relative w-full h-[240px] overflow-hidden" style={{ borderRadius: '20px' }}>
+          <div className="relative w-full h-[180px] overflow-hidden" style={{ borderRadius: '20px' }}>
             <Image
               src="/main.jpg"
               alt="Magnet Protocol"
