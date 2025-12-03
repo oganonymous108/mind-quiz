@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 
+export const dynamic = 'force-dynamic'
+
 interface QuizAnswer {
   questionId: number
   answer: string | string[]

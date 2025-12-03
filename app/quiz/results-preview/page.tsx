@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { trackResultsView, trackClickBankRedirect } from '@/lib/analytics'
 
+export const dynamic = 'force-dynamic'
+
 export default function ResultsPreviewPage() {
   const router = useRouter()
 

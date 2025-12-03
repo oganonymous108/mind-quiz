@@ -5,6 +5,8 @@ import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { trackQuizComplete } from '@/lib/analytics'
 
+export const dynamic = 'force-dynamic'
+
 export default function CalculatingPage() {
   const router = useRouter()
   const [progress, setProgress] = useState(0)

@@ -4,6 +4,8 @@ import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { trackQuizStart } from '@/lib/analytics'
 
+export const dynamic = 'force-dynamic'
+
 export default function LandingPage() {
   const router = useRouter()
 
