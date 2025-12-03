@@ -10,7 +10,7 @@ export default function GoogleAnalytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    if (pathname && GA_TRACKING_ID && typeof window !== 'undefined' && window.gtag) {
+    if (pathname && GA_TRACKING_ID && typeof window !== 'undefined' && typeof window.gtag === 'function') {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
       pageview(url)
     }
@@ -40,7 +40,7 @@ export default function GoogleAnalytics() {
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
         onLoad={() => {
           console.log('[GA] Script loaded via Next.js Script component')
-          if (typeof window !== 'undefined' && window.gtag) {
+          if (typeof window !== 'undefined' && typeof window.gtag === 'function') {
             window.gtag('js', new Date())
             window.gtag('config', GA_TRACKING_ID, {
               page_path: window.location.pathname,
