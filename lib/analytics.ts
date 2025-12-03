@@ -32,13 +32,15 @@ export const initGA = () => {
 
   // Initialize dataLayer and gtag function first
   window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args: any[]) {
+  
+  // Define gtag function before script loads (for queuing commands)
+  function gtag(...args: any[]) {
     window.dataLayer.push(args)
-    // Debug logging in development
-    if (process.env.NODE_ENV === 'development') {
-      console.log('[GA Debug]', ...args)
-    }
+    // Debug logging
+    console.log('[GA Debug]', ...args)
   }
+  
+  window.gtag = gtag
 
   // Load gtag script
   const script = document.createElement('script')
@@ -46,14 +48,17 @@ export const initGA = () => {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
   
   script.onload = () => {
-    window.gtag('js', new Date())
-    window.gtag('config', GA_TRACKING_ID, {
-      page_path: window.location.pathname,
-    })
-    
-    if (process.env.NODE_ENV === 'development') {
-      console.log('[GA] Initialized with ID:', GA_TRACKING_ID)
-    }
+    // Wait a bit to ensure gtag is fully loaded
+    setTimeout(() => {
+      window.gtag('js', new Date())
+      window.gtag('config', GA_TRACKING_ID, {
+        page_path: window.location.pathname,
+        send_page_view: true,
+      })
+      
+      console.log('[GA] Successfully initialized with ID:', GA_TRACKING_ID)
+      console.log('[GA] Check Network tab for requests to google-analytics.com/g/collect')
+    }, 100)
   }
 
   script.onerror = () => {
@@ -65,10 +70,14 @@ export const initGA = () => {
 
 // Track page view
 export const pageview = (url: string) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+  if (typeof window !== 'undefined' && window.gtag && GA_TRACKING_ID) {
     window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
+      send_page_view: true,
     })
+    console.log('[GA] Pageview tracked:', url)
+  } else {
+    console.warn('[GA] Cannot track pageview - gtag not available or GA_TRACKING_ID missing')
   }
 }
 
