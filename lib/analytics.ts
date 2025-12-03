@@ -22,10 +22,10 @@ export const initGA = () => {
     return
   }
 
-  // Check if already initialized
-  if (window.gtag && window.dataLayer) {
+  // Prevent double initialization by checking if script already exists
+  if (document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}"]`)) {
     if (process.env.NODE_ENV === 'development') {
-      console.log('[GA] Already initialized')
+      console.log('[GA] Already initialized - script exists')
     }
     return
   }

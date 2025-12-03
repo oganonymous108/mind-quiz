@@ -9,11 +9,17 @@ export default function GoogleAnalytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
+    // Debug: Log the tracking ID
+    console.log('[GA Component] GA_TRACKING_ID:', GA_TRACKING_ID)
+    console.log('[GA Component] NEXT_PUBLIC_GA_ID from env:', process.env.NEXT_PUBLIC_GA_ID)
+    
     // Only initialize if GA_TRACKING_ID is available
     if (GA_TRACKING_ID) {
+      console.log('[GA Component] Initializing GA...')
       initGA()
     } else {
-      console.warn('[GA] Google Analytics not initialized - NEXT_PUBLIC_GA_ID is missing')
+      console.warn('[GA Component] Google Analytics not initialized - NEXT_PUBLIC_GA_ID is missing')
+      console.warn('[GA Component] GA_TRACKING_ID value:', GA_TRACKING_ID)
     }
   }, [])
 
