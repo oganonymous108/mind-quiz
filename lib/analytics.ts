@@ -30,35 +30,32 @@ export const initGA = () => {
     return
   }
 
-  // Initialize dataLayer and gtag function first
+  // Initialize dataLayer first (required by gtag.js)
   window.dataLayer = window.dataLayer || []
   
-  // Define gtag function before script loads (for queuing commands)
+  // Define gtag function BEFORE script loads (standard GA4 pattern)
+  // This queues commands before the script loads
   function gtag(...args: any[]) {
     window.dataLayer.push(args)
-    // Debug logging
-    console.log('[GA Debug]', ...args)
   }
-  
   window.gtag = gtag
 
-  // Load gtag script
+  // Load gtag script - this will replace our placeholder function with the real one
   const script = document.createElement('script')
   script.async = true
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
   
   script.onload = () => {
-    // Wait a bit to ensure gtag is fully loaded
-    setTimeout(() => {
-      window.gtag('js', new Date())
-      window.gtag('config', GA_TRACKING_ID, {
-        page_path: window.location.pathname,
-        send_page_view: true,
-      })
-      
-      console.log('[GA] Successfully initialized with ID:', GA_TRACKING_ID)
-      console.log('[GA] Check Network tab for requests to google-analytics.com/g/collect')
-    }, 100)
+    // Now send initialization commands - the real gtag function should handle these
+    window.gtag('js', new Date())
+    window.gtag('config', GA_TRACKING_ID, {
+      page_path: window.location.pathname,
+      send_page_view: true,
+    })
+    
+    console.log('[GA] Script loaded and initialized with ID:', GA_TRACKING_ID)
+    console.log('[GA] DataLayer length:', window.dataLayer.length)
+    console.log('[GA] Check Network tab for requests to google-analytics.com/g/collect')
   }
 
   script.onerror = () => {
