@@ -11,21 +11,56 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || ''
 
 // Initialize Google Analytics
 export const initGA = () => {
-  if (typeof window !== 'undefined' && GA_TRACKING_ID) {
-    // Load gtag script
-    const script1 = document.createElement('script')
-    script1.async = true
-    script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
-    document.head.appendChild(script1)
-
-    // Initialize dataLayer and gtag
-    window.dataLayer = window.dataLayer || []
-    window.gtag = function gtag(...args: any[]) {
-      window.dataLayer.push(args)
-    }
-    window.gtag('js', new Date())
-    window.gtag('config', GA_TRACKING_ID)
+  if (typeof window === 'undefined') {
+    return
   }
+
+  if (!GA_TRACKING_ID) {
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('[GA] Not initialized - GA_TRACKING_ID is missing')
+    }
+    return
+  }
+
+  // Check if already initialized
+  if (window.gtag && window.dataLayer) {
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA] Already initialized')
+    }
+    return
+  }
+
+  // Initialize dataLayer and gtag function first
+  window.dataLayer = window.dataLayer || []
+  window.gtag = function gtag(...args: any[]) {
+    window.dataLayer.push(args)
+    // Debug logging in development
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Debug]', ...args)
+    }
+  }
+
+  // Load gtag script
+  const script = document.createElement('script')
+  script.async = true
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
+  
+  script.onload = () => {
+    window.gtag('js', new Date())
+    window.gtag('config', GA_TRACKING_ID, {
+      page_path: window.location.pathname,
+    })
+    
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA] Initialized with ID:', GA_TRACKING_ID)
+    }
+  }
+
+  script.onerror = () => {
+    console.error('[GA] Failed to load Google Analytics script')
+  }
+
+  document.head.appendChild(script)
 }
 
 // Track page view
@@ -45,6 +80,9 @@ export const trackQuizStart = (gender: string) => {
       event_label: 'Quiz Started',
       gender: gender,
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] quiz_start', { gender })
+    }
   }
 }
 
@@ -57,6 +95,9 @@ export const trackQuestionView = (questionId: number, questionText: string) => {
       question_id: questionId,
       question_text: questionText,
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] question_view', { questionId, questionText })
+    }
   }
 }
 
@@ -74,6 +115,9 @@ export const trackQuestionAnswer = (
       answer: Array.isArray(answer) ? answer.join(', ') : answer,
       question_type: questionType,
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] question_answer', { questionId, answer, questionType })
+    }
   }
 }
 
@@ -85,6 +129,9 @@ export const trackQuizComplete = (totalQuestions: number) => {
       event_label: 'Quiz Completed',
       total_questions: totalQuestions,
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] quiz_complete', { totalQuestions })
+    }
   }
 }
 
@@ -98,6 +145,9 @@ export const trackQuizAbandon = (lastQuestionId: number, totalQuestions: number)
       total_questions: totalQuestions,
       completion_percentage: Math.round((lastQuestionId / totalQuestions) * 100),
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] quiz_abandon', { lastQuestionId, totalQuestions })
+    }
   }
 }
 
@@ -108,6 +158,9 @@ export const trackResultsView = () => {
       event_category: 'Quiz',
       event_label: 'Results Page Viewed',
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] results_view')
+    }
   }
 }
 
@@ -118,6 +171,9 @@ export const trackClickBankRedirect = () => {
       event_category: 'Conversion',
       event_label: 'ClickBank Redirect',
     })
+    if (process.env.NODE_ENV === 'development') {
+      console.log('[GA Event] clickbank_redirect')
+    }
   }
 }
 

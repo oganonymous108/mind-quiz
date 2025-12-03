@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {process.env.NEXT_PUBLIC_GA_ID && <GoogleAnalytics />}
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
