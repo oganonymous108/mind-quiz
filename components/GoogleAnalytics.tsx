@@ -1,34 +1,62 @@
 'use client'
 
 import { useEffect } from 'react'
+import Script from 'next/script'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { initGA, pageview, GA_TRACKING_ID } from '@/lib/analytics'
+import { pageview, GA_TRACKING_ID } from '@/lib/analytics'
 
 export default function GoogleAnalytics() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Debug: Log the tracking ID (this is the value embedded at build time)
-    console.log('[GA Component] GA_TRACKING_ID:', GA_TRACKING_ID || '(empty - not set at build time)')
-    
-    // Only initialize if GA_TRACKING_ID is available
-    if (GA_TRACKING_ID) {
-      console.log('[GA Component] Initializing GA...')
-      initGA()
-    } else {
-      console.warn('[GA Component] Google Analytics not initialized - NEXT_PUBLIC_GA_ID was not set in Vercel environment variables during build')
-      console.warn('[GA Component] Please set NEXT_PUBLIC_GA_ID=G-J6YXGVTQBV in Vercel and redeploy')
-    }
-  }, [])
-
-  useEffect(() => {
-    if (pathname && GA_TRACKING_ID) {
+    if (pathname && GA_TRACKING_ID && typeof window !== 'undefined' && window.gtag) {
       const url = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '')
       pageview(url)
     }
   }, [pathname, searchParams])
 
-  return null
+  useEffect(() => {
+    // Initialize dataLayer and gtag BEFORE script loads (required by GA4)
+    if (typeof window !== 'undefined' && GA_TRACKING_ID) {
+      window.dataLayer = window.dataLayer || []
+      window.gtag = window.gtag || function(...args: any[]) {
+        window.dataLayer.push(args)
+      }
+      console.log('[GA Component] GA_TRACKING_ID:', GA_TRACKING_ID)
+    }
+  }, [])
+
+  if (!GA_TRACKING_ID) {
+    console.warn('[GA Component] Google Analytics not initialized - NEXT_PUBLIC_GA_ID was not set')
+    return null
+  }
+
+  return (
+    <>
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        onLoad={() => {
+          console.log('[GA] Script loaded via Next.js Script component')
+          if (typeof window !== 'undefined' && window.gtag) {
+            window.gtag('js', new Date())
+            window.gtag('config', GA_TRACKING_ID, {
+              page_path: window.location.pathname,
+              send_page_view: true,
+            })
+            
+            console.log('[GA] Initialized with ID:', GA_TRACKING_ID)
+            console.log('[GA] DataLayer length:', window.dataLayer?.length || 0)
+            console.log('[GA] Check Network tab for /g/collect requests')
+          }
+        }}
+        onError={() => {
+          console.error('[GA] Failed to load script')
+        }}
+      />
+    </>
+  )
 }
 

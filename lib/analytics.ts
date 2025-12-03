@@ -46,16 +46,29 @@ export const initGA = () => {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`
   
   script.onload = () => {
-    // Now send initialization commands - the real gtag function should handle these
-    window.gtag('js', new Date())
-    window.gtag('config', GA_TRACKING_ID, {
-      page_path: window.location.pathname,
-      send_page_view: true,
-    })
-    
-    console.log('[GA] Script loaded and initialized with ID:', GA_TRACKING_ID)
-    console.log('[GA] DataLayer length:', window.dataLayer.length)
-    console.log('[GA] Check Network tab for requests to google-analytics.com/g/collect')
+    // Wait for the script to fully execute and replace our placeholder function
+    // Use a small delay to ensure gtag.js has processed
+    setTimeout(() => {
+      // Verify the real gtag function is available (it should be different from our placeholder)
+      const originalGtag = window.gtag
+      
+      // Send initialization commands
+      window.gtag('js', new Date())
+      window.gtag('config', GA_TRACKING_ID, {
+        page_path: window.location.pathname,
+        send_page_view: true,
+      })
+      
+      console.log('[GA] Script loaded and initialized with ID:', GA_TRACKING_ID)
+      console.log('[GA] DataLayer length:', window.dataLayer.length)
+      console.log('[GA] gtag function type:', typeof window.gtag)
+      
+      // Check if collect requests are being sent
+      setTimeout(() => {
+        console.log('[GA] After 1s - DataLayer length:', window.dataLayer.length)
+        console.log('[GA] Check Network tab for requests to google-analytics.com/g/collect')
+      }, 1000)
+    }, 200)
   }
 
   script.onerror = () => {
