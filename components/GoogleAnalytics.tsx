@@ -9,17 +9,16 @@ export default function GoogleAnalytics() {
   const searchParams = useSearchParams()
 
   useEffect(() => {
-    // Debug: Log the tracking ID
-    console.log('[GA Component] GA_TRACKING_ID:', GA_TRACKING_ID)
-    console.log('[GA Component] NEXT_PUBLIC_GA_ID from env:', process.env.NEXT_PUBLIC_GA_ID)
+    // Debug: Log the tracking ID (this is the value embedded at build time)
+    console.log('[GA Component] GA_TRACKING_ID:', GA_TRACKING_ID || '(empty - not set at build time)')
     
     // Only initialize if GA_TRACKING_ID is available
     if (GA_TRACKING_ID) {
       console.log('[GA Component] Initializing GA...')
       initGA()
     } else {
-      console.warn('[GA Component] Google Analytics not initialized - NEXT_PUBLIC_GA_ID is missing')
-      console.warn('[GA Component] GA_TRACKING_ID value:', GA_TRACKING_ID)
+      console.warn('[GA Component] Google Analytics not initialized - NEXT_PUBLIC_GA_ID was not set in Vercel environment variables during build')
+      console.warn('[GA Component] Please set NEXT_PUBLIC_GA_ID=G-J6YXGVTQBV in Vercel and redeploy')
     }
   }, [])
 
