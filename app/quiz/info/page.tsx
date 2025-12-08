@@ -22,7 +22,7 @@ export default function InfoPage() {
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex justify-center">
-      <div className="w-full max-w-[480px] flex flex-col">
+      <div className="w-full max-w-[480px]">
         {/* Header */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <button
@@ -53,8 +53,8 @@ export default function InfoPage() {
           </div>
         </div>
 
-        {/* Text Content - Content area that can grow */}
-        <div className="px-4 mb-8 flex-grow">
+        {/* Text Content */}
+        <div className="px-4">
           <h1 className="text-2xl font-bold mb-4 text-left">
             Neuroscience shows that your subconscious controls 95% of your life
           </h1>
@@ -71,13 +71,13 @@ export default function InfoPage() {
             You can work harder. Think more positively. Try again and again. But nothing truly changes - because the block is deeper.
           </p>
 
-          <p className="text-white text-left text-base leading-[23px] mb-6">
+          <p className="text-white text-left text-base leading-[23px] mb-0">
             This is why you still feel stuck, even when you&apos;re doing your best. <span className="font-bold text-orange-500">And that&apos;s exactly what Magnet Protocol is about to change.</span>
           </p>
         </div>
 
         {/* Got It Button */}
-        <div className="px-4 pb-8">
+        <div className="px-4 pb-8 mt-[15px]">
           <button
             onClick={handleGotIt}
             className="w-full py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
