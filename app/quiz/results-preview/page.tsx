@@ -48,12 +48,13 @@ export default function ResultsPreviewPage() {
 
         {/* Brain Activity Visuals */}
         <div className="px-4 mb-[15px] mt-[15px]">
-          <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
+          <div className="relative w-full rounded-2xl overflow-hidden">
             <Image
               src="/brains.png"
               alt="Brain before and after session"
-              fill
-              className="object-contain"
+              width={800}
+              height={400}
+              className="w-full h-auto rounded-2xl"
               priority
             />
           </div>
