@@ -70,12 +70,43 @@ export default function ResultsPreviewPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center leading-tight">
               Based on your answers, you&apos;re on track to rewire{' '}
               <span className="text-orange-400">80%</span> of your{' '}
-              <span className="text-orange-400 font-bold">limiting beliefs</span> in just{' '}
+              <span className="text-orange-400 font-bold">limiting beliefs</span> and attract success in just{' '}
               <span className="font-bold">21 days.</span>
             </h2>
             <p className="text-gray-400 text-center text-sm">
               Here&apos;s what we predict based on 27,000+ users with similar self-limiting patterns.
             </p>
+          </motion.div>
+        </div>
+
+        {/* Benefits List */}
+        <div className="px-4 mb-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="space-y-3"
+          >
+            <div className="flex items-center gap-3 text-white">
+              <span className="text-green-400 text-xl">✅</span>
+              <span className="text-base leading-[23px]">Attract wealth and success effortlessly</span>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="text-green-400 text-xl">✅</span>
+              <span className="text-base leading-[23px]">Improved IQ & mental power</span>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="text-green-400 text-xl">✅</span>
+              <span className="text-base leading-[23px]">Sharper memory retention</span>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="text-green-400 text-xl">✅</span>
+              <span className="text-base leading-[23px]">Laser-focused concentration</span>
+            </div>
+            <div className="flex items-center gap-3 text-white">
+              <span className="text-green-400 text-xl">✅</span>
+              <span className="text-base leading-[23px]">Deeper, healthier relationships</span>
+            </div>
           </motion.div>
         </div>
 
