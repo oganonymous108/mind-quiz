@@ -49,7 +49,7 @@ export default function ResultsPreviewPage() {
         {/* Brain Activity Visuals */}
         <div className="px-4 mb-8 mt-8">
           <div className="bg-gray-800/50 rounded-2xl p-6">
-            <div className="relative w-full aspect-square mb-4" style={{ borderRadius: '20px', overflow: 'hidden' }}>
+            <div className="relative w-full aspect-square" style={{ borderRadius: '20px', overflow: 'hidden' }}>
               <Image
                 src="/brains.png"
                 alt="Brain before and after session"
@@ -57,10 +57,6 @@ export default function ResultsPreviewPage() {
                 className="object-contain"
                 priority
               />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <p className="text-sm text-gray-300 text-center">Brain before session</p>
-              <p className="text-sm text-gray-300 text-center">Brain after session</p>
             </div>
           </div>
         </div>
