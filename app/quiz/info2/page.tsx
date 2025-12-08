@@ -64,8 +64,8 @@ export default function Info2Page() {
           </p>
         </div>
 
-        {/* Got It Button - Sticky at bottom */}
-        <div className="sticky bottom-0 px-4 pt-4 pb-8 bg-[#1a1a1a] border-t border-gray-800/50">
+        {/* Got It Button */}
+        <div className="px-4 pb-8">
           <button
             onClick={handleGotIt}
             className="w-full py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
