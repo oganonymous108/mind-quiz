@@ -48,7 +48,7 @@ export default function ResultsPreviewPage() {
 
         {/* Brain Activity Visuals */}
         <div className="px-4 mb-8 mt-8">
-          <div className="bg-gray-800/50 rounded-2xl p-6">
+          <div className="bg-gray-800/50 rounded-2xl">
             <div className="relative w-full aspect-square" style={{ borderRadius: '20px', overflow: 'hidden' }}>
               <Image
                 src="/brains.png"
