@@ -237,4 +237,5 @@ export const trackQuizQ13View = () => trackFunnelPageView('quiz_question_13', 16
 export const trackQuizQ14View = () => trackFunnelPageView('quiz_question_14', 17)
 export const trackCalculatingPageView = () => trackFunnelPageView('calculating_page', 18)
 export const trackResultsPreviewPageView = () => trackFunnelPageView('results_preview_page', 19)
+export const trackResultsButtonClick = () => trackFunnelPageView('results_button_click', 20)
 
