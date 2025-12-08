@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { trackResultsView, trackClickBankRedirect } from '@/lib/analytics'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
@@ -11,10 +12,13 @@ export default function ResultsPreviewPage() {
   const router = useRouter()
 
   useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+    
     // Check if user has completed quiz
     const storedAnswers = localStorage.getItem('quizAnswers')
     if (!storedAnswers) {
-      router.push('/')
+      router.push(appendRtkcidToUrl('/'))
     } else {
       // Track results page view
       trackResultsView()
@@ -25,8 +29,9 @@ export default function ResultsPreviewPage() {
     // Track ClickBank redirect
     trackClickBankRedirect()
     
-    // Redirect to ClickBank affiliate page
-    window.location.href = 'https://get.magnetprotocol.com/click'
+    // Redirect to ClickBank affiliate page with rtkcid
+    const clickbankUrl = appendRtkcidToUrl('https://get.magnetprotocol.com/click')
+    window.location.href = clickbankUrl
   }
 
   return (

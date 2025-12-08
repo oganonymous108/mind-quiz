@@ -1,11 +1,18 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
+import { initRtkcid } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
 export default function ContactPage() {
   const router = useRouter()
+
+  useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+  }, [])
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex justify-center">

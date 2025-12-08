@@ -1,16 +1,23 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
 export default function InfoPage() {
   const router = useRouter()
 
+  useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+  }, [])
+
   const handleGotIt = () => {
     // Continue to question 6
-    router.push('/quiz/6')
+    router.push(appendRtkcidToUrl('/quiz/6'))
   }
 
   return (
@@ -19,7 +26,7 @@ export default function InfoPage() {
         {/* Header */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <button
-            onClick={() => router.push('/quiz/5')}
+            onClick={() => router.push(appendRtkcidToUrl('/quiz/5'))}
             className="text-white hover:text-orange-400 transition-colors"
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">

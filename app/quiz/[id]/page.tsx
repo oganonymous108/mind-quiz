@@ -4,6 +4,7 @@ import { useRouter, useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { trackQuestionView, trackQuestionAnswer, trackQuizAbandon } from '@/lib/analytics'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 interface QuizAnswer {
   questionId: number
@@ -175,6 +176,9 @@ export default function QuizPage() {
   const [numberInput, setNumberInput] = useState<string>('')
 
   useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+    
     // Load stored answers
     const stored = localStorage.getItem('quizAnswers')
     if (stored) {
@@ -207,7 +211,7 @@ export default function QuizPage() {
   }, [questionId, storedAnswers, currentQuestion])
 
   if (!currentQuestion) {
-    router.push('/quiz/1')
+    router.push(appendRtkcidToUrl('/quiz/1'))
     return null
   }
 
@@ -238,14 +242,14 @@ export default function QuizPage() {
       setTimeout(() => {
         if (questionId === 5) {
           // After question 5, go to info page
-          router.push('/quiz/info')
+          router.push(appendRtkcidToUrl('/quiz/info'))
         } else if (questionId === 7) {
           // After question 7, go to info2 page
-          router.push('/quiz/info2')
+          router.push(appendRtkcidToUrl('/quiz/info2'))
         } else if (questionId < QUIZ_QUESTIONS.length) {
-          router.push(`/quiz/${questionId + 1}`)
+          router.push(appendRtkcidToUrl(`/quiz/${questionId + 1}`))
         } else {
-          router.push('/quiz/calculating')
+          router.push(appendRtkcidToUrl('/quiz/calculating'))
         }
       }, 300) // Small delay for visual feedback
     } else {
@@ -290,30 +294,30 @@ export default function QuizPage() {
     // Navigate to next question, info page, or results
     if (questionId === 5) {
       // After question 5, go to info page
-      router.push('/quiz/info')
+      router.push(appendRtkcidToUrl('/quiz/info'))
     } else if (questionId === 7) {
       // After question 7, go to info2 page
-      router.push('/quiz/info2')
+      router.push(appendRtkcidToUrl('/quiz/info2'))
     } else if (questionId < QUIZ_QUESTIONS.length) {
-      router.push(`/quiz/${questionId + 1}`)
+      router.push(appendRtkcidToUrl(`/quiz/${questionId + 1}`))
     } else {
-      router.push('/quiz/calculating')
+      router.push(appendRtkcidToUrl('/quiz/calculating'))
     }
   }
 
   const handleBack = () => {
     if (questionId === 6) {
       // From question 6, go back to info page
-      router.push('/quiz/info')
+      router.push(appendRtkcidToUrl('/quiz/info'))
     } else if (questionId === 8) {
       // From question 8, go back to info2 page
-      router.push('/quiz/info2')
+      router.push(appendRtkcidToUrl('/quiz/info2'))
     } else if (questionId > 1) {
-      router.push(`/quiz/${questionId - 1}`)
+      router.push(appendRtkcidToUrl(`/quiz/${questionId - 1}`))
     } else {
       // Track abandonment when leaving quiz to go back to landing page
       trackQuizAbandon(questionId, QUIZ_QUESTIONS.length)
-      router.push('/')
+      router.push(appendRtkcidToUrl('/'))
     }
   }
 

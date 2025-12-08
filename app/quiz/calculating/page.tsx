@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { trackQuizComplete } from '@/lib/analytics'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,6 +20,9 @@ export default function CalculatingPage() {
   ]
 
   useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+    
     // Track quiz completion when page loads
     trackQuizComplete(14) // Total number of questions
     
@@ -29,7 +33,7 @@ export default function CalculatingPage() {
           clearInterval(interval)
           // Redirect to results page after animation completes
           setTimeout(() => {
-            router.push('/quiz/results-preview')
+            router.push(appendRtkcidToUrl('/quiz/results-preview'))
           }, 500)
           return 100
         }

@@ -1,13 +1,20 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
+import { useEffect } from 'react'
 import Image from 'next/image'
 import { trackQuizStart } from '@/lib/analytics'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
 export default function LandingPage() {
   const router = useRouter()
+
+  useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+  }, [])
 
   const handleGenderSelect = (gender: 'male' | 'female') => {
     // Track quiz start
@@ -15,8 +22,8 @@ export default function LandingPage() {
     
     // Store gender in localStorage
     localStorage.setItem('quizGender', gender)
-    // Redirect to quiz immediately
-    router.push('/quiz/1')
+    // Redirect to quiz immediately with rtkcid
+    router.push(appendRtkcidToUrl('/quiz/1'))
   }
 
   return (

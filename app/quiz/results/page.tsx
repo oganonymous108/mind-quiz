@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,6 +18,9 @@ export default function ResultsPage() {
   const [gender, setGender] = useState<string>('')
 
   useEffect(() => {
+    // Initialize rtkcid from URL on page load
+    initRtkcid()
+    
     // Load answers and gender
     const storedAnswers = localStorage.getItem('quizAnswers')
     const storedGender = localStorage.getItem('quizGender')
@@ -30,13 +34,14 @@ export default function ResultsPage() {
 
     // If no answers, redirect to start
     if (!storedAnswers) {
-      router.push('/')
+      router.push(appendRtkcidToUrl('/'))
     }
   }, [router])
 
   const handleGetResults = () => {
-    // Redirect to ClickBank affiliate page
-    window.location.href = 'https://get.magnetprotocol.com/click'
+    // Redirect to ClickBank affiliate page with rtkcid
+    const clickbankUrl = appendRtkcidToUrl('https://get.magnetprotocol.com/click')
+    window.location.href = clickbankUrl
   }
 
   // Calculate personalized results based on answers
