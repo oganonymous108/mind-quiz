@@ -60,7 +60,7 @@ export default function Info2Page() {
           </h1>
           
           <p className="text-white text-left text-base leading-[23px]">
-            What you&apos;re feeling is completely normal — we all carry hidden patterns that quietly hold us back. That&apos;s exactly why we created Magnet Protocol with leading experts: to clear those blocks and open the path to abundance.
+            What you&apos;re feeling is completely normal — we all carry hidden patterns that quietly hold us back. That&apos;s exactly why we created this program with leading experts: to clear those blocks and open the path to abundance.
           </p>
         </div>
 
