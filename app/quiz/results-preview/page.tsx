@@ -85,25 +85,25 @@ export default function ResultsPreviewPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="space-y-3"
+            className="space-y-[6px]"
           >
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-[6px] text-white">
               <span className="text-green-400 text-xl">✅</span>
               <span className="text-base leading-[23px]">Attract wealth and success effortlessly</span>
             </div>
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-[6px] text-white">
               <span className="text-green-400 text-xl">✅</span>
               <span className="text-base leading-[23px]">Improved IQ & mental power</span>
             </div>
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-[6px] text-white">
               <span className="text-green-400 text-xl">✅</span>
               <span className="text-base leading-[23px]">Sharper memory retention</span>
             </div>
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-[6px] text-white">
               <span className="text-green-400 text-xl">✅</span>
               <span className="text-base leading-[23px]">Laser-focused concentration</span>
             </div>
-            <div className="flex items-center gap-3 text-white">
+            <div className="flex items-center gap-[6px] text-white">
               <span className="text-green-400 text-xl">✅</span>
               <span className="text-base leading-[23px]">Deeper, healthier relationships</span>
             </div>
