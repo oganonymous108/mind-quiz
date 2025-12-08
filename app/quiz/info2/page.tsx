@@ -54,7 +54,7 @@ export default function Info2Page() {
         </div>
 
         {/* Text Content - Content area that can grow */}
-        <div className="px-4 mb-8 flex-grow">
+        <div className="px-4 flex-grow">
           <h1 className="text-2xl font-bold mb-4 text-center">
             Thank you for sharing
           </h1>
