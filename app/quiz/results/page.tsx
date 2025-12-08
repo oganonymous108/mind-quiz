@@ -36,9 +36,7 @@ export default function ResultsPage() {
 
   const handleGetResults = () => {
     // Redirect to ClickBank affiliate page
-    // Replace with your actual ClickBank affiliate link
-    const clickbankUrl = process.env.NEXT_PUBLIC_CLICKBANK_URL || 'https://your-clickbank-affiliate-link.com'
-    window.location.href = clickbankUrl
+    window.location.href = 'https://get.magnetprotocol.com/click'
   }
 
   // Calculate personalized results based on answers

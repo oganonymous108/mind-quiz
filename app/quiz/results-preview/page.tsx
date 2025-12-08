@@ -26,8 +26,7 @@ export default function ResultsPreviewPage() {
     trackClickBankRedirect()
     
     // Redirect to ClickBank affiliate page
-    const clickbankUrl = process.env.NEXT_PUBLIC_CLICKBANK_URL || 'https://your-clickbank-affiliate-link.com'
-    window.location.href = clickbankUrl
+    window.location.href = 'https://get.magnetprotocol.com/click'
   }
 
   return (
