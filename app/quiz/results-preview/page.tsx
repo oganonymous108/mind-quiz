@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { trackResultsView, trackClickBankRedirect } from '@/lib/analytics'
+import { trackResultsView, trackClickBankRedirect, trackResultsPreviewPageView } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
@@ -21,8 +21,9 @@ export default function ResultsPreviewPage() {
     if (!storedAnswers) {
       router.push(appendRtkcidToUrl('/'))
     } else {
-      // Track results page view
+      // Track results page view and funnel page view
       trackResultsView()
+      trackResultsPreviewPageView()
     }
   }, [router])
 

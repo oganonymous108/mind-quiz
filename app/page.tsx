@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Image from 'next/image'
-import { trackQuizStart } from '@/lib/analytics'
+import { trackQuizStart, trackLandingPageView } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
@@ -14,6 +14,8 @@ export default function LandingPage() {
   useEffect(() => {
     // Initialize rtkcid from URL on page load
     initRtkcid()
+    // Track landing page view
+    trackLandingPageView()
   }, [])
 
   const handleGenderSelect = (gender: 'male' | 'female') => {

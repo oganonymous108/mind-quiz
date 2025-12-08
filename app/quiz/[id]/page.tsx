@@ -3,7 +3,7 @@
 import { useRouter, useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { trackQuestionView, trackQuestionAnswer, trackQuizAbandon } from '@/lib/analytics'
+import { trackQuestionView, trackQuestionAnswer, trackQuizAbandon, trackQuizQ1View, trackQuizQ2View, trackQuizQ3View, trackQuizQ4View, trackQuizQ5View, trackQuizQ6View, trackQuizQ7View, trackQuizQ8View, trackQuizQ9View, trackQuizQ10View, trackQuizQ11View, trackQuizQ12View, trackQuizQ13View, trackQuizQ14View } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 interface QuizAnswer {
@@ -204,9 +204,55 @@ export default function QuizPage() {
       setNumberInput('')
     }
 
-    // Track question view
+    // Track question view and funnel page view
     if (currentQuestion) {
       trackQuestionView(currentQuestion.id, currentQuestion.question)
+      
+      // Track unique funnel page view based on question ID
+      switch (currentQuestion.id) {
+        case 1:
+          trackQuizQ1View()
+          break
+        case 2:
+          trackQuizQ2View()
+          break
+        case 3:
+          trackQuizQ3View()
+          break
+        case 4:
+          trackQuizQ4View()
+          break
+        case 5:
+          trackQuizQ5View()
+          break
+        case 6:
+          trackQuizQ6View()
+          break
+        case 7:
+          trackQuizQ7View()
+          break
+        case 8:
+          trackQuizQ8View()
+          break
+        case 9:
+          trackQuizQ9View()
+          break
+        case 10:
+          trackQuizQ10View()
+          break
+        case 11:
+          trackQuizQ11View()
+          break
+        case 12:
+          trackQuizQ12View()
+          break
+        case 13:
+          trackQuizQ13View()
+          break
+        case 14:
+          trackQuizQ14View()
+          break
+      }
     }
   }, [questionId, storedAnswers, currentQuestion])
 

@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
+import { trackInfoPageView } from '@/lib/analytics'
 
 export const dynamic = 'force-dynamic'
 
@@ -13,6 +14,8 @@ export default function InfoPage() {
   useEffect(() => {
     // Initialize rtkcid from URL on page load
     initRtkcid()
+    // Track info page view
+    trackInfoPageView()
   }, [])
 
   const handleGotIt = () => {
