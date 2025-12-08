@@ -22,7 +22,7 @@ export default function Info2Page() {
 
   return (
     <div className="min-h-screen bg-[#1a1a1a] text-white flex justify-center">
-      <div className="w-full max-w-[480px] flex flex-col">
+      <div className="w-full max-w-[480px]">
         {/* Header */}
         <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <button
@@ -53,19 +53,19 @@ export default function Info2Page() {
           </div>
         </div>
 
-        {/* Text Content - Content area that can grow */}
-        <div className="px-4 flex-grow">
+        {/* Text Content */}
+        <div className="px-4">
           <h1 className="text-2xl font-bold mb-4 text-center">
             Thank you for sharing
           </h1>
           
-          <p className="text-white text-left text-base leading-[23px]">
+          <p className="text-white text-left text-base leading-[23px] mb-0">
             What you&apos;re feeling is completely normal — we all carry hidden patterns that quietly hold us back. That&apos;s exactly why we created this program with leading experts: to clear those blocks and open the path to abundance.
           </p>
         </div>
 
         {/* Got It Button */}
-        <div className="px-4 pb-8">
+        <div className="px-4 pb-8 mt-0">
           <button
             onClick={handleGotIt}
             className="w-full py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
