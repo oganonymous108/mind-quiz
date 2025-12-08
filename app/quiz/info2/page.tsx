@@ -65,7 +65,7 @@ export default function Info2Page() {
         </div>
 
         {/* Got It Button */}
-        <div className="px-4 pb-8 mt-0">
+        <div className="px-4 pb-8 mt-[15px]">
           <button
             onClick={handleGotIt}
             className="w-full py-4 px-8 rounded-xl font-bold text-lg bg-gradient-to-r from-orange-500 to-orange-700 text-white shadow-lg hover:scale-105 transition-all"
