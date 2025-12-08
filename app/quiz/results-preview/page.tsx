@@ -70,7 +70,8 @@ export default function ResultsPreviewPage() {
             <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center leading-tight">
               Based on your answers, you&apos;re on track to rewire{' '}
               <span className="text-orange-400">80%</span> of your{' '}
-              <span className="text-orange-400 font-bold">limiting beliefs</span> and attract success in just{' '}
+              <span className="text-orange-400 font-bold">limiting beliefs</span> and{' '}
+              <span className="text-orange-400 font-bold">attract success</span> in just{' '}
               <span className="font-bold">21 days.</span>
             </h2>
             <p className="text-gray-400 text-center text-sm">
