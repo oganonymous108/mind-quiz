@@ -17,6 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <Script id="mouseflow-init" strategy="beforeInteractive">
+          {`window._mfq = window._mfq || [];`}
+        </Script>
+        <Script
+          id="mouseflow-tracker"
+          src="//cdn.mouseflow.com/projects/d15de9f6-dabd-4ca6-a4a4-ace9b21c4894.js"
+          strategy="afterInteractive"
+          defer
+        />
         <Script
           src="https://get.magnetprotocol.com/track.js"
           strategy="afterInteractive"
