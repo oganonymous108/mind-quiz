@@ -4,7 +4,7 @@ import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { trackResultsView, trackClickBankRedirect, trackResultsPreviewPageView, trackResultsButtonClick } from '@/lib/analytics'
+import { trackResultsView, trackClickBankRedirect, trackFunnelStep } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
@@ -23,13 +23,13 @@ export default function ResultsPreviewPage() {
     } else {
       // Track results page view and funnel page view
       trackResultsView()
-      trackResultsPreviewPageView()
+      trackFunnelStep(19) // Results preview page
     }
   }, [router])
 
   const handleGetStarted = () => {
-    // Track funnel button click event
-    trackResultsButtonClick()
+    // Track funnel step 20 (button click)
+    trackFunnelStep(20)
     
     // Track ClickBank redirect
     trackClickBankRedirect()

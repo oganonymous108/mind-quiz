@@ -3,7 +3,7 @@
 import { useRouter, useParams } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { trackQuestionView, trackQuestionAnswer, trackQuizAbandon, trackQuizQ1View, trackQuizQ2View, trackQuizQ3View, trackQuizQ4View, trackQuizQ5View, trackQuizQ6View, trackQuizQ7View, trackQuizQ8View, trackQuizQ9View, trackQuizQ10View, trackQuizQ11View, trackQuizQ12View, trackQuizQ13View, trackQuizQ14View } from '@/lib/analytics'
+import { trackQuestionView, trackQuestionAnswer, trackQuizAbandon, trackFunnelStep } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 interface QuizAnswer {
@@ -204,55 +204,19 @@ export default function QuizPage() {
       setNumberInput('')
     }
 
-    // Track question view and funnel page view
+    // Track question view and funnel step
     if (currentQuestion) {
       trackQuestionView(currentQuestion.id, currentQuestion.question)
       
-      // Track unique funnel page view based on question ID
-      switch (currentQuestion.id) {
-        case 1:
-          trackQuizQ1View()
-          break
-        case 2:
-          trackQuizQ2View()
-          break
-        case 3:
-          trackQuizQ3View()
-          break
-        case 4:
-          trackQuizQ4View()
-          break
-        case 5:
-          trackQuizQ5View()
-          break
-        case 6:
-          trackQuizQ6View()
-          break
-        case 7:
-          trackQuizQ7View()
-          break
-        case 8:
-          trackQuizQ8View()
-          break
-        case 9:
-          trackQuizQ9View()
-          break
-        case 10:
-          trackQuizQ10View()
-          break
-        case 11:
-          trackQuizQ11View()
-          break
-        case 12:
-          trackQuizQ12View()
-          break
-        case 13:
-          trackQuizQ13View()
-          break
-        case 14:
-          trackQuizQ14View()
-          break
-      }
+      // Track funnel step based on question ID
+      // Step 2-6: Quiz Q1-Q5, Step 8-9: Quiz Q6-Q7, Step 11-17: Quiz Q8-Q14
+      const stepNumber = currentQuestion.id <= 5 
+        ? currentQuestion.id + 1  // Q1=2, Q2=3, Q3=4, Q4=5, Q5=6
+        : currentQuestion.id <= 7
+        ? currentQuestion.id + 2   // Q6=8, Q7=9 (Info page at step 7 is between Q5 and Q6)
+        : currentQuestion.id + 3   // Q8=11, Q9=12, Q10=13, Q11=14, Q12=15, Q13=16, Q14=17 (Info2 page at step 10 is between Q7 and Q8)
+      
+      trackFunnelStep(stepNumber)
     }
   }, [questionId, storedAnswers, currentQuestion])
 

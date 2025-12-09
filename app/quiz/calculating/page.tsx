@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { trackQuizComplete, trackCalculatingPageView } from '@/lib/analytics'
+import { trackQuizComplete, trackFunnelStep } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
@@ -24,7 +24,7 @@ export default function CalculatingPage() {
     initRtkcid()
     
     // Track calculating page view
-    trackCalculatingPageView()
+    trackFunnelStep(18) // Calculating page
     
     // Track quiz completion when page loads
     trackQuizComplete(14) // Total number of questions

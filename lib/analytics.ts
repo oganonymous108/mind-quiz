@@ -196,46 +196,17 @@ export const trackClickBankRedirect = () => {
   }
 }
 
-// Track funnel page views with unique event names
-export const trackFunnelPageView = (pageName: string, stepNumber?: number) => {
+// Track funnel step - single unified event with step_number parameter
+export const trackFunnelStep = (stepNumber: number) => {
   if (typeof window !== 'undefined' && window.gtag) {
-    const eventData: any = {
+    window.gtag('event', 'funnel_step', {
       event_category: 'Funnel',
-      event_label: pageName,
-      page_name: pageName,
-    }
-    
-    if (stepNumber !== undefined) {
-      eventData.step_number = stepNumber
-    }
-    
-    window.gtag('event', `funnel_${pageName.toLowerCase().replace(/\s+/g, '_')}`, eventData)
+      step_number: stepNumber,
+    })
     
     if (process.env.NODE_ENV === 'development') {
-      console.log(`[GA Event] funnel_${pageName.toLowerCase().replace(/\s+/g, '_')}`, eventData)
+      console.log('[GA Event] funnel_step', { step_number: stepNumber })
     }
   }
 }
-
-// Specific funnel page tracking functions
-export const trackLandingPageView = () => trackFunnelPageView('landing_page', 1)
-export const trackQuizQ1View = () => trackFunnelPageView('quiz_question_1', 2)
-export const trackQuizQ2View = () => trackFunnelPageView('quiz_question_2', 3)
-export const trackQuizQ3View = () => trackFunnelPageView('quiz_question_3', 4)
-export const trackQuizQ4View = () => trackFunnelPageView('quiz_question_4', 5)
-export const trackQuizQ5View = () => trackFunnelPageView('quiz_question_5', 6)
-export const trackInfoPageView = () => trackFunnelPageView('info_page', 7)
-export const trackQuizQ6View = () => trackFunnelPageView('quiz_question_6', 8)
-export const trackQuizQ7View = () => trackFunnelPageView('quiz_question_7', 9)
-export const trackInfo2PageView = () => trackFunnelPageView('info2_page', 10)
-export const trackQuizQ8View = () => trackFunnelPageView('quiz_question_8', 11)
-export const trackQuizQ9View = () => trackFunnelPageView('quiz_question_9', 12)
-export const trackQuizQ10View = () => trackFunnelPageView('quiz_question_10', 13)
-export const trackQuizQ11View = () => trackFunnelPageView('quiz_question_11', 14)
-export const trackQuizQ12View = () => trackFunnelPageView('quiz_question_12', 15)
-export const trackQuizQ13View = () => trackFunnelPageView('quiz_question_13', 16)
-export const trackQuizQ14View = () => trackFunnelPageView('quiz_question_14', 17)
-export const trackCalculatingPageView = () => trackFunnelPageView('calculating_page', 18)
-export const trackResultsPreviewPageView = () => trackFunnelPageView('results_preview_page', 19)
-export const trackResultsButtonClick = () => trackFunnelPageView('results_button_click', 20)
 
