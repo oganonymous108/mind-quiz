@@ -1,7 +1,7 @@
 'use client'
 
 import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Script from 'next/script'
 import { trackQuizStart, trackClickBankRedirect, trackFunnelStep } from '@/lib/analytics'
@@ -22,6 +22,7 @@ declare global {
 
 export default function DCLandingPage() {
   const router = useRouter()
+  const pageViewFired = useRef(false)
 
   useEffect(() => {
     // Initialize rtkcid from URL on page load
@@ -29,9 +30,10 @@ export default function DCLandingPage() {
     // Track funnel step 1 (landing page)
     trackFunnelStep(1)
     
-    // Track Facebook Pixel PageView event
-    if (typeof window !== 'undefined' && window.fbq) {
+    // Track Facebook Pixel PageView event (only once, prevent double-firing in React Strict Mode)
+    if (typeof window !== 'undefined' && window.fbq && !pageViewFired.current) {
       window.fbq('track', 'PageView')
+      pageViewFired.current = true
     }
   }, [])
 
