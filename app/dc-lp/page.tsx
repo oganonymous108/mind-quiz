@@ -29,13 +29,18 @@ export default function DCLandingPage() {
     // Track funnel step 1 (landing page)
     trackFunnelStep(1)
     
-    // Track Facebook Pixel ViewContent event
+    // Track Facebook Pixel PageView event
     if (typeof window !== 'undefined' && window.fbq) {
-      window.fbq('track', 'ViewContent')
+      window.fbq('track', 'PageView')
     }
   }, [])
 
   const handleGenderSelect = (gender: 'male' | 'female') => {
+    // Track Facebook Pixel ViewContent event on button click
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'ViewContent')
+    }
+    
     // Track quiz start
     trackQuizStart(gender)
     
@@ -64,7 +69,6 @@ export default function DCLandingPage() {
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
           fbq('init', '${FB_PIXEL_ID}');
-          fbq('track', 'PageView');
         `}
       </Script>
       <noscript>
