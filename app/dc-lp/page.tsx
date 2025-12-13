@@ -3,10 +3,22 @@
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import Image from 'next/image'
+import Script from 'next/script'
 import { trackQuizStart, trackClickBankRedirect, trackFunnelStep } from '@/lib/analytics'
 import { initRtkcid, appendRtkcidToUrl } from '@/lib/rtkcid'
 
 export const dynamic = 'force-dynamic'
+
+// Facebook Pixel ID
+const FB_PIXEL_ID = '2167613367378834'
+
+// Declare fbq function for TypeScript
+declare global {
+  interface Window {
+    fbq: (...args: any[]) => void
+    _fbq: any
+  }
+}
 
 export default function DCLandingPage() {
   const router = useRouter()
@@ -16,6 +28,11 @@ export default function DCLandingPage() {
     initRtkcid()
     // Track funnel step 1 (landing page)
     trackFunnelStep(1)
+    
+    // Track Facebook Pixel ViewContent event
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'ViewContent')
+    }
   }, [])
 
   const handleGenderSelect = (gender: 'male' | 'female') => {
@@ -34,8 +51,34 @@ export default function DCLandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-gray-900 flex justify-center">
-      <div className="w-full max-w-[480px]">
+    <>
+      {/* Facebook Pixel Code */}
+      <Script id="facebook-pixel" strategy="afterInteractive">
+        {`
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '${FB_PIXEL_ID}');
+          fbq('track', 'PageView');
+        `}
+      </Script>
+      <noscript>
+        <img
+          height="1"
+          width="1"
+          style={{ display: 'none' }}
+          src={`https://www.facebook.com/tr?id=${FB_PIXEL_ID}&ev=PageView&noscript=1`}
+          alt=""
+        />
+      </noscript>
+      
+      <div className="min-h-screen bg-white text-gray-900 flex justify-center">
+        <div className="w-full max-w-[480px]">
         {/* Header */}
         <div className="flex items-center justify-center px-4 pt-2 pb-1">
           <div className="flex items-center gap-2">
@@ -106,6 +149,7 @@ export default function DCLandingPage() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 
