@@ -110,6 +110,29 @@ export default function DGLandingPage() {
             </button>
           </div>
 
+          {/* Social Proof */}
+          <div className="px-4 mb-8">
+            <div className="flex items-center justify-center gap-2 mb-6">
+              <Image
+                src="/members.png"
+                alt="Members"
+                width={200}
+                height={40}
+                className="h-10 w-auto"
+              />
+              <div className="flex items-center gap-2">
+                <div className="flex text-yellow-400">
+                  {'★★★★★'.split('').map((star, i) => (
+                    <span key={i}>{star}</span>
+                  ))}
+                </div>
+                <span className="text-sm text-gray-700">
+                  98% of satisfied users based on user interviews
+                </span>
+              </div>
+            </div>
+          </div>
+
           {/* Footer */}
           <div className="px-4 pb-8 text-center text-xs text-gray-500 space-y-3">
             <div className="flex flex-wrap justify-center gap-4">
