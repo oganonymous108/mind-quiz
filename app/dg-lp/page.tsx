@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Script from 'next/script'
@@ -21,7 +20,6 @@ declare global {
 }
 
 export default function DGLandingPage() {
-  const router = useRouter()
   const pageViewFired = useRef(false)
 
   useEffect(() => {
@@ -79,54 +77,55 @@ export default function DGLandingPage() {
       
       <div className="min-h-screen bg-white text-gray-900 flex justify-center">
         <div className="w-full max-w-[480px]">
-        {/* Main Image */}
-        <div className="px-4 mb-[10px] mt-[10px]">
-          <div className="relative w-full h-[180px] overflow-hidden" style={{ borderRadius: '20px' }}>
-            <Image
-              src="/main.jpg"
-              alt="Magnet Protocol"
-              fill
-              className="object-cover"
-              priority
-            />
+          {/* Main Image */}
+          <div className="px-4 mb-[10px] mt-[10px]">
+            <div className="relative w-full h-[180px] overflow-hidden" style={{ borderRadius: '20px' }}>
+              <Image
+                src="/main.jpg"
+                alt="Magnet Protocol"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
-        </div>
 
-        {/* Program Description */}
-        <div className="px-4 mb-8">
-          <h1 className="text-3xl font-bold mb-4 text-left text-gray-900">
-            A Revolutionary Way to Manifest Your Dream Life
-          </h1>
-          <p className="text-gray-700 text-left text-base leading-[23px] mb-4">
-            Transform your life. Attract love, wealth, and abundance with ease.
-          </p>
-        </div>
-
-        {/* Continue Button */}
-        <div className="px-4 mb-8">
-          <button
-            onClick={handleContinue}
-            className="w-full py-4 px-8 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-lg shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all"
-          >
-            Get Started Now →
-          </button>
-        </div>
-
-        {/* Footer */}
-        <div className="px-4 pb-8 text-center text-xs text-gray-500 space-y-3">
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">
-              Contact Us
-            </a>
-            <a href="/privacy" className="text-gray-600 hover:text-orange-500 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="/terms" className="text-gray-600 hover:text-orange-500 transition-colors">
-              Terms & Conditions
-            </a>
+          {/* Program Description */}
+          <div className="px-4 mb-8">
+            <h1 className="text-3xl font-bold mb-4 text-left text-gray-900">
+              A Revolutionary Way to Manifest Your Dream Life
+            </h1>
+            <p className="text-gray-700 text-left text-base leading-[23px] mb-4">
+              Transform your life. Attract love, wealth, and abundance with ease.
+            </p>
           </div>
-          <p>© 2025 All rights reserved.</p>
-          <p>Disclaimer: Results may vary from person to person</p>
+
+          {/* Continue Button */}
+          <div className="px-4 mb-8">
+            <button
+              onClick={handleContinue}
+              className="w-full py-4 px-8 rounded-xl bg-gradient-to-r from-orange-500 to-orange-600 text-white font-bold text-lg shadow-lg hover:from-orange-600 hover:to-orange-700 transition-all"
+            >
+              Get Started Now →
+            </button>
+          </div>
+
+          {/* Footer */}
+          <div className="px-4 pb-8 text-center text-xs text-gray-500 space-y-3">
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href="/contact" className="text-gray-600 hover:text-orange-500 transition-colors">
+                Contact Us
+              </a>
+              <a href="/privacy" className="text-gray-600 hover:text-orange-500 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="/terms" className="text-gray-600 hover:text-orange-500 transition-colors">
+                Terms & Conditions
+              </a>
+            </div>
+            <p>© 2025 All rights reserved.</p>
+            <p>Disclaimer: Results may vary from person to person</p>
+          </div>
         </div>
       </div>
     </>
